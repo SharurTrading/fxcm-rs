@@ -1,10 +1,10 @@
 // SPDX-FileCopyrightText: 2026 Kevin Monaghan
 // SPDX-License-Identifier: MIT-0
 
-//! Repository scaffold for an unofficial provider-native FXCM client.
+//! Repository scaffold for an unofficial provider-native FXCM FIX 4.4 client.
 //!
 //! No network, authentication, market-data, account, or trading operations are
-//! implemented. Protocol and client layout remain undecided. The integration
-//! targets an in-process client without a separately running gateway; a pure Rust
-//! implementation and an SDK-backed `ForexConnect` wrapper are distinct options.
-//! Consumers own their runtime, credentials, policy, and account reconciliation.
+//! implemented. The client targets direct Rust FIX connections without a desktop
+//! gateway, Java runtime, native provider SDK, or separate proxy. Client layout
+//! remains undecided. Consumers own their runtime, credentials, trading policy,
+//! derived account values, and reconciliation.

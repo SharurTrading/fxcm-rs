@@ -25,5 +25,5 @@ the broker and retain only minimal redacted evidence.
 
 The crate currently has no transport or trading implementation. These requirements
 govern code added through reviewed changes. Unsupported transports must fail
-explicitly. Any native SDK/FFI integration requires an explicit operator decision
-and review of its credential, threading, lifetime, packaging, and unsafe-code boundary.
+explicitly; a native SDK or unreviewed gateway is not a fallback for the selected
+direct Rust FIX implementation.
