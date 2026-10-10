@@ -5,7 +5,7 @@ SPDX-License-Identifier: MIT-0
 
 # FXCM Rust Client
 
-> An unofficial, independent Rust inner client project for FXCM FIX 4.4.
+> An unofficial, independent Rust inner client project for FXCM APIs.
 
 [![CI](https://github.com/SharurTrading/fxcm-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/SharurTrading/fxcm-rs/actions/workflows/ci.yml)
 
@@ -23,8 +23,10 @@ Maintained by SharurTrading. This project is not affiliated with or endorsed by 
 | Area | Contract |
 | --- | --- |
 | Crate | `fxcm-client`, Rust 2024, pinned stable toolchain |
-| Intended protocol | FXCM FIX 4.4, connected directly from Rust |
-| Runtime boundary | No desktop gateway, Java runtime, ForexConnect native SDK, FFI bridge, or separate proxy |
+| Protocol decision | ForexConnect, FIX, or both remain under evaluation |
+| Runtime goal | No separately running desktop gateway or proxy; prefer a pure Rust implementation |
+| SDK option | An in-process ForexConnect SDK wrapper is under evaluation, not implemented or approved |
+| Client layout | One or two clients remains an operator decision |
 | Ownership | Provider-native transport, protocol, identities, and wire models |
 | Consumer ownership | Credentials, runtime, strategies, routing, risk, accounting, persistence, and reconciliation |
 | Implemented API | None; repository setup only |
@@ -32,17 +34,24 @@ Maintained by SharurTrading. This project is not affiliated with or endorsed by 
 
 ## API and access
 
-FXCM's [API overview](https://www.fxcm.com/markets/algorithmic-trading/api-trading/)
-describes FIX as a direct trading and live-price interface and publishes a $5,000
-Trading Station account minimum. Its [API comparison](https://www.fxcm.com/markets/algorithmic-trading/compare-api/)
-identifies FIX as a standard socket protocol. These public sources were checked on
-2026-10-10; account eligibility, credentials, transport details, and the current
-message specification require broker confirmation.
+FXCM's [API comparison](https://www.fxcm.com/markets/algorithmic-trading/compare-api/)
+describes FIX as a standard protocol and ForexConnect as proprietary. Its
+[ForexConnect integration guide](https://fxcodebase.com/wiki/index.php/Start_Using_ForexConnect_in_C%2B%2B_project)
+documents linking an application against native shared libraries. That documented
+SDK path runs inside the application; it does not require a separate Trading Station
+process. A Rust wrapper is a potential integration path, but is not a pure Rust
+replacement for the provider's protocol implementation.
 
-[Issue #1](https://github.com/SharurTrading/fxcm-rs/issues/1) tracks that contract
-and access work before implementation. Historical data and the complete account
-surface are not claimed. Older REST/Socket.IO documentation is not proof of a
-currently provisioned service.
+No public ForexConnect wire specification sufficient for an independent Rust
+implementation was identified in the sources reviewed on 2026-10-10. That is an
+evidence gap, not proof that such an implementation is impossible.
+
+[Issue #1](https://github.com/SharurTrading/fxcm-rs/issues/1) tracks protocol
+feasibility, current SDK/platform support, and access prerequisites before
+implementation. FXCM's [API overview](https://www.fxcm.com/markets/algorithmic-trading/api-trading/)
+publishes a $5,000 account minimum for FIX; eligibility needs confirmation for the
+operator's account. No protocol, capability coverage, or one/two-client architecture
+is committed. Older REST documentation is not proof of a current service.
 
 ## Repository map
 
