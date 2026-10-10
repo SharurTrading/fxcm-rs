@@ -1,0 +1,11 @@
+// SPDX-FileCopyrightText: 2026 Kevin Monaghan
+// SPDX-License-Identifier: MIT-0
+
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD041": false
+  },
+  "ignores": ["target/**"]
+}
