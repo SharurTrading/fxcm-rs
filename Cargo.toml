@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 Kevin Monaghan
+# SPDX-License-Identifier: MIT-0
+
+[package]
+name = "fxcm-client"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+publish = false
+license = "MIT-0"
+description = "Provider-native Rust client project for FXCM FIX 4.4"
+repository = "https://github.com/SharurTrading/fxcm-rs"
+readme = "README.md"
+keywords = ["fxcm", "fix", "trading", "forex", "api-client"]
+categories = ["api-bindings", "asynchronous", "network-programming"]
+
+[lints.rust]
+missing_docs = "deny"
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "deny", priority = -1 }
+arithmetic_side_effects = "deny"
+await_holding_lock = "deny"
+expect_used = "deny"
+unwrap_used = "deny"
+panic = "deny"
+todo = "deny"
+unimplemented = "deny"
+unreachable = "deny"
+print_stdout = "deny"
+print_stderr = "deny"
+dbg_macro = "deny"
